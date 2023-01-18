@@ -115,20 +115,22 @@ echo '<br><br>';
 /*###############################################*/
 
 //----------------------------------------
-//Créer un tableau pour les mois de l'année et affiché tous les mois de Janvier à Décembre
+//Créer un tableau pour les mois de l'année et afficher tous les mois de Janvier à Décembre
 //modifier et/ou remplacer les éléments ci-dessous
 echo "8.Les mois depuis le debut de l'annee : <br>";
-$mois = [];
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = ["janvier","février","mars","avril","mai","juin","juillet","aout","septembre","octobre","novembre","décembre"];
+foreach ($mois as $each){
+    echo "$each <br>";
 }
 echo '<br><br>';
 
 //Afficher les mois de la fin de l'année jusqu'au début de l'année
 //modifier et/ou remplacer les éléments ci-dessous
 echo "9.Les mois depuis la fin de l'annee : <br>";
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = ["janvier","février","mars","avril","mai","juin","juillet","aout","septembre","octobre","novembre","décembre"];
+$array2 = array_reverse($mois);
+foreach ($array2 as $item){
+    echo "$item<br>";
 }
 echo '<br><br>';
 
@@ -158,13 +160,50 @@ $college = array(
 
 echo '10.Les eleves du college : <br>';
 //ajoutez votre code ici
+foreach ($college as $classe){
+    foreach ($classe as $student) {
+        echo $student["Nom"] . " " . $student["Prenom"] . "<br>";
+    }
+}
 echo '<br><br>';
 
 //----------------------------------------
+
+$college = array(
+    'Sixieme' => array(
+        array('Nom' => 'Payet', 'Prenom' => 'Mickael'),
+        array('Nom' => 'Hoareau', 'Prenom' => 'Christine'),
+        array('Nom' => 'Maillot', 'Prenom' => 'Laure'),
+    ),
+    'Cinquieme' => array(
+        array('Nom' => 'Bourdon', 'Prenom' => 'Didier'),
+        array('Nom' => 'Legitimus', 'Prenom' => 'Pascal'),
+        array('Nom' => 'Campan', 'Prenom' => 'Bernard'),
+        array('Nom' => 'Fois', 'Prenom' => 'Marina'),
+        array('Nom' => 'Floresti', 'Prenom' => 'Florence'),
+    ),
+    'Quatrieme' => array(
+        array('Nom' => 'Willis', 'Prenom' => 'Bruce'),
+        array('Nom' => 'Lawrence', 'Prenom' => 'Laurence'),
+        array('Nom' => 'Johannson', 'Prenom' => 'Scarlett'),
+        array('Nom' => 'Jackson', 'Prenom' => 'Samuel'),
+    ),
+    'Troisieme' => array(
+        array('Nom' => 'machin', 'Prenom' => 'Bruce'),
+        array('Nom' => 'truc', 'Prenom' => 'Laurence'),
+        array('Nom' => 'bidule', 'Prenom' => 'Scarlett'),
+        array('Nom' => 'chouette', 'Prenom' => 'Samuel'),
+    ),
+);
 //Afficher le nom et prénoms des élèves de ce collège
 //reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
 echo '11.Les eleves du college (avec les nouveaux arrivants): <br>';
 //ajoutez votre code ici
+foreach ($college as $classe){
+    foreach ($classe as $student) {
+        echo $student["Nom"] . " " . $student["Prenom"] . "<br>";
+    }
+}
 echo '<br><br>';
 
 //----------------------------------------
@@ -205,7 +244,23 @@ $videotheque = array(
 );
 
 echo '12.Mes films : <br>';
+
 //ajoutez votre code ici
+
+foreach ($videotheque as $movies) {
+    foreach ($movies as $keys => $info){
+        if (is_array($info)){
+            echo "acteurs : ";
+            foreach ($info as $actors){
+                echo $actors . " ";
+            }
+            echo "<br><br>";
+        }else{
+            echo $keys . " : " . $info . "<br>";
+        }
+    }
+}
+
 echo '<br><br>';
 
 //----------------------------------------
@@ -216,4 +271,46 @@ echo '<br><br>';
 
 echo '13.Mes films : <br>';
 //ajoutez votre code ici
+
+$videotheque = array(
+    array(
+        'nom' => 'Interstellar',
+        'date' => 2014,
+        'realisateur' => 'Christopher Nolan',
+        'acteurs' => array(
+            'Matthew McConaughey', 'John Lithgow', 'Anne Hathaway', 'Jessica Chastain',
+        ),
+    ),
+    array(
+        'nom' => 'Shutter Island',
+        'date' => 2010,
+        'realisateur' => 'Martin Scorsese',
+        'acteurs' => array(
+            'Leonardo DiCaprio', 'Mark Ruffalo', 'Ben Kingsley',
+        ),
+    ),
+    array(
+        'nom' => 'Mommy',
+        'date' => 2014,
+        'realisateur' => 'Xavier Dolan',
+        'acteurs' => array(
+            'Anne Dorval', 'Antoine Olivier Pilon', 'Suzanne Clément',
+        ),
+    ),
+);
+
+foreach ($videotheque as $movies) {
+    foreach ($movies as $keys => $info){
+        if (is_array($info)){
+            echo "acteurs : ";
+            foreach ($info as $actors){
+                echo $actors . " ";
+            }
+            echo "<br><br>";
+        }else{
+            echo $keys . " : " . $info . "<br>";
+        }
+    }
+}
+
 echo '<br><br>';
